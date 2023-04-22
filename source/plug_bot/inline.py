@@ -25,10 +25,10 @@ async def answer(client, inline_query):
              InlineKeyboardButton("⑩",callback_data="help10"),
              ],
              [
-             InlineKeyboardButton("✅ - قناه السورس - ✅",url="https://t.me/SOURCE_HORSE"),
+             InlineKeyboardButton("🔥 - قناه السورس - 🔥",url="https://t.me/SOURCE_HORSE"),
              ],
              [
-             InlineKeyboardButton("🔺️ - جروب المساعدة - 🔻",url="https://t.me/BAR_HORSE"),
+             InlineKeyboardButton("🔥 - جروب المساعدة - 🔥",url="https://t.me/BAR_HORSE"),
              ]]
              )
     await inline_query.answer(

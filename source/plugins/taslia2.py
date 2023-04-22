@@ -2076,7 +2076,7 @@ async def gajjajay(client: Client, message: Message):
     await asyncio.sleep(0.3)
     await message.edit("🔥🔥🔥")
     await asyncio.sleep(0.3)
-await message.edit("سورس هورس هيعمل عظمه 🥹❤️")
+    await message.edit("سورس هورس هيعمل عظمه 🥹❤️")
 
 # == == == == == == == == == == == == == == == == == == == ==
 

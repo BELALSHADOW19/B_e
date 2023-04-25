@@ -28,7 +28,7 @@ async def get_group_call(
     await message.edit(f"{err_msg}")
     return False
 
-@Client.on_message(filters.command("فتح الكول$", prefixes=f".") & (filters.me | filters.user(sudo_command))
+@Client.on_message(filters.command("فتح الكول$", prefixes=f".") & (filters.me | filters.user(sudo_command)))
 async def opengc(c, msg):
     await msg.edit("جاري فتح الكول")
     if (

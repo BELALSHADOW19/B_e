@@ -74,13 +74,13 @@ async def _(c, msg):
             "**⌯︙شـرح كيـفية كـتابة همـسة سـرية**\n⌯︙اولا اكتب الامر  .همسة  بعدها الرسالة بعدها اكتب معرف الشخص\n⌯︙مـثال  :   `.همسة ههلا @Belal_19`")
 
 
-@Client.on_message(filters.command("اكس او$", prefixes=f".") & filters.me)
-async def gamez(c, msg):
-    jmusername = "@xoBot"
-    uunzz = "play"
+@Client.on_message(filters.command("شطرنج$", prefixes=f".") & filters.me)
+async def gamechess(c, msg):
+    jmusername = "@chessy_bot"
+    uunzz = ""
     tap = await c.get_inline_bot_results(jmusername, uunzz)
-    await tap[0].click(msg.chat.id)
     await msg.delete()
+    await c.send_inline_bot_result(msg.chat.id, tap.query_id, tap.results[0].id)
 
 # == == == == == == == == == == == == == == == == == == == ==
 
@@ -96,7 +96,6 @@ async def permalink_heno(c, msg):
         return await c.send_message(msg.chat.id, f"**- لكك دي هذا المطور**")
     if msg.reply_to_message.from_user.id == 5523863949:
         return await c.send_message(msg.chat.id, f"**- لكك دي هذا المطور**")
-    muh = msg.from_user.first_name.replace("\u2060", "") if msg.from_user.first_name else msg.from_user.id
     sos = random.choice(heno)
     await c.send_message(msg.chat.id, f"{sos} .")
 
@@ -108,7 +107,6 @@ async def permalink_hob(c, msg):
     roz = ['10', '20', '30','40','50','60','70','80','90','100']
     if not msg.reply_to_message:
         return
-    muh = msg.from_user.first_name.replace("\u2060", "") if msg.from_user.first_name else msg.reply_to_message
     rza = random.choice(roz)
     await msg.edit( f"• العضو {get_name(msg.reply_to_message)} \n• نسبه الحب بينك وبينه هي {rza}"
     )
@@ -126,7 +124,6 @@ async def permalink_onotha(c, msg):
         return await msg.edit(f"**- لكك دي هذه المطورة قمورة وعلى راسك**")
     if msg.reply_to_message.from_user.id == 5523863949:
         return await msg.edit(f"**- لكك دي هذا المطور زلمة وعلى راسك**")
-    muh = msg.from_user.first_name.replace("\u2060", "") if msg.from_user.first_name else msg.reply_to_message
     sos = random.choice(rr7)
     return await msg.edit( f" • العضو {get_name(msg.reply_to_message)} \n• نسبة الانوثه هي {sos}"
     )
@@ -138,7 +135,6 @@ async def permalink_abaaa(c, msg):
     rr7 = ['10', '20', '30','40','50','60','70','80','90','100']
     if not msg.reply_to_message:
         return
-    muh = msg.from_user.first_name.replace("\u2060", "") if msg.from_user.first_name else msg.reply_to_message
     rzona = random.choice(rr7)
     await msg.edit( f"• العضو {get_name(msg.reply_to_message)} \n• نسبه غبائه هي {rzona}"
     )
@@ -156,7 +152,6 @@ async def permalink_rgola(c, msg):
         return await msg.edit(f"**100%**")
     if msg.reply_to_message.from_user.id == 5523863949:
         return await msg.edit(f"**100%**")
-    muh = msg.from_user.first_name.replace("\u2060", "") if msg.from_user.first_name else msg.reply_to_message
     sos = random.choice(kz)
     await msg.edit( f" • العضو {get_name(msg.reply_to_message)} \n• نسبة رجولته هي {sos}"
     )
@@ -168,7 +163,6 @@ async def permalink_zakaa(c, msg):
     rr7 = ['10', '20', '30','40','50','60','70','80','90','100']
     if not msg.reply_to_message:
         return
-    muh = msg.from_user.first_name.replace("\u2060", "") if msg.from_user.first_name else msg.reply_to_message
     rzona = random.choice(rr7)
     await msg.edit( f"• العضو {get_name(msg.reply_to_message)} \n• نسبه الذكاء بتعته هي {rzona}"
     )
@@ -180,7 +174,6 @@ async def permalink_korh(c, msg):
     rr7 = ['10', '20', '30','40','50','60','70','80','90','100']
     if not msg.reply_to_message:
         return
-    muh = msg.from_user.first_name.replace("\u2060", "") if msg.from_user.first_name else msg.reply_to_message
     rzona = random.choice(rr7)
     await msg.edit( f"• العضو {get_name(msg.reply_to_message)} \n• نسبه كره لك هي {rzona}"
     )
@@ -192,7 +185,6 @@ async def permalink_rain(c, msg):
     rr7 = ['10', '20', '30','40','50','60','70','80','90','100']
     if not msg.reply_to_message:
         return
-    muh = msg.from_user.first_name.replace("\u2060", "") if msg.from_user.first_name else msg.reply_to_message
     rzona = random.choice(rr7)
     await msg.edit( f"• العضو {get_name(msg.reply_to_message)} \n• نسبه الشذوذ بتعته هي {rzona}"
     )
@@ -204,7 +196,6 @@ async def permalink_afana(c, msg):
     rr7 = ['10', '20', '30','40','50','60','70','80','90','100']
     if not msg.reply_to_message:
         return
-    muh = msg.from_user.first_name.replace("\u2060", "") if msg.from_user.first_name else msg.reply_to_message
     rzona = random.choice(rr7)
     await msg.edit( f"• العضو {get_name(msg.reply_to_message)} \n• نسبه عفانته هي {rzona}"
     )
@@ -216,7 +207,6 @@ async def permalink_hatl(c, msg):
     rr7 = ['10', '20', '30','40','50','60','70','80','90','100']
     if not msg.reply_to_message:
         return
-    muh = msg.from_user.first_name.replace("\u2060", "") if msg.from_user.first_name else msg.reply_to_message
     rzona = random.choice(rr7)
     await msg.edit( f"• العضو {get_name(msg.reply_to_message)} \n• نسبه هطله هي {rzona}"
     )
@@ -228,7 +218,6 @@ async def permalink_abat(c, msg):
     rr7 = ['10', '20', '30','40','50','60','70','80','90','100']
     if not msg.reply_to_message:
         return
-    muh = msg.from_user.first_name.replace("\u2060", "") if msg.from_user.first_name else msg.reply_to_message
     rzona = random.choice(rr7)
     await msg.edit( f"• العضو {get_name(msg.reply_to_message)} \n• نسبه عبطه هي {rzona}"
     )
@@ -240,7 +229,6 @@ async def permalink_Belal(c, msg):
     rr7 = ['10', '20', '30','40','50','60','70','80','90','100']
     if not msg.reply_to_message:
         return
-    muh = msg.from_user.first_name.replace("\u2060", "") if msg.from_user.first_name else msg.reply_to_message
     rzona = random.choice(rr7)
     await msg.edit( f"• العضو {get_name(msg.reply_to_message)} \n• نسبه قوته هي {rzona}"
     )
@@ -252,7 +240,6 @@ async def permalink_power(c, msg):
     rr7 = ['10', '20', '30','40','50','60','70','80','90','100']
     if not msg.reply_to_message:
         return
-    muh = msg.from_user.first_name.replace("\u2060", "") if msg.from_user.first_name else msg.reply_to_message
     rzona = random.choice(rr7)
     await msg.edit( f"• العضو {get_name(msg.reply_to_message)} \n• نسبه ضعفه هي {rzona}"
     )
@@ -264,7 +251,6 @@ async def permalink_zeim(c, msg):
     rr7 = ['10', '20', '30','40','50','60','70','80','90','100']
     if not msg.reply_to_message:
         return
-    muh = msg.from_user.first_name.replace("\u2060", "") if msg.from_user.first_name else msg.reply_to_message
     rzona = random.choice(rr7)
     await msg.edit( f"• العضو {get_name(msg.reply_to_message)} \n• نسبه الهبل بتعته هي {rzona}"
     )

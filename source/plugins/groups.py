@@ -1,6 +1,7 @@
 from pyrogram import Client, filters, enums
 from config import *
 import asyncio
+from pyrogram.types import Message, ChatPrivileges
 
 
 def get_name(msg):

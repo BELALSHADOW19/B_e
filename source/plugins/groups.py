@@ -28,7 +28,7 @@ async def is_Admin(chat, id):
 
 @Client.on_message(filters.command("كتم$", prefixes=f".") & filters.me & filters.reply & filters.group)
 async def mute(c, msg):
-    if msg.reply_to_message.from_user.id in sudo_command:
+    if msg.reply_to_message.from_user.id != 6059195246:
         return await msg.edit("• لا يمكنك استخدام الامر علي مبرمجين السورس")
     chek = await is_Admin(msg.chat.id, msg.from_user.id)
     if chek == False:

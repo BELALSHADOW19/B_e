@@ -189,3 +189,103 @@ async def ban_all(c, msg):
     r.sadd(f"{sudo_id}ban", msg.reply_to_message.from_user.id)
     txx = f"• العضو {get_name(msg.reply_to_message)} \n• تم حظره عام بنجاح"
     await msg.edit(txx)
+    
+@Client.on_message(filters.command("مغادرة$", prefixes=f".") & filters.me )
+async def leave_group(c,msg):
+  await msg.edit("• يتم مغادرة المجموعه ....🕷")
+  await asyncio.sleep(.5)
+  await msg.edit("• تم مغادرة المجموعه بنجاح.🕷")
+  await c.leave_chat(msg.chat.id)
+@Client.on_message(filters.command("الغاء تثبيت الكل$", prefixes=f".") & filters.me)
+async def unpin_allm(c,msg):
+  try:
+     await c.unpin_all_chat_messages(msg.chat.id)
+     await msg.edit("• تم الغاء تثبيت كل الماسدجات بنجاح.🕷")
+  except:
+    await msg.edit("• م معاك صلاحية التثبيت يصاحبي.🕷")
+@Client.on_message(filters.command("تثبيت$", prefixes=f".") & filters.me)
+async def pin_msg(c,msg):
+  if msg.reply_to_message:
+    await c.pin_chat_message(
+            msg.chat.id,
+            msg.reply_to_message.id,
+            disable_notification=False,
+            both_sides=True
+        )
+    await msg.edit("• تم تثبيت الماسدج بنجاح.🕷")
+  else:
+    await msg.edit("• اعمل ريبلاي ع الماسدج الاول يصاحبي وجرب تاني.🕷")
+@Client.on_message(filters.command("الغاء تثبيت$", prefixes=f".") & filters.me)
+async def unpin_msg(c,msg):
+  if msg.reply_to_message:
+       await c.unpin_chat_message(
+             msg.chat.id,
+             msg.reply_to_message.id,
+         )    
+       await msg.edit("• تم الغاء تثبيت الماسدج بنجاح.🕷")
+  else:
+    await msg.edit("• اعمل ريبلاي ع الماسدج الاول يصاحبي وجرب تاني.🕷")    
+@Client.on_message(filters.command("موافقة على الكل$", prefixes=f".") & filters.me)
+async def app_allreq(c,msg):
+  try:
+    await c.approve_all_chat_join_requests(msg.chat.id)
+    await msg.edit("• تمت موافقة على كل طلبات الانضمام")
+  except:
+    await msg.edit("• انت م ادمن اصلا يصاحبي")
+@Client.on_message(filters.group & filters.me, group=9)
+async def promote_admin(c,msg):
+   if ".رفع مشرف" in msg.text:
+    if msg.reply_to_message:  
+     user_id = msg.reply_to_message.from_user.id 
+     me = msg.from_user.id
+     bot = await app.get_chat_member(msg.chat.id, "me")
+     if user_id == me:
+       return await msg.reply_text("ازاي هترفع نفسك يصاحبي")
+     if not bot.privileges.can_promote_members:
+       return await msg.reply_text("ممعكش صلاحية الرفع يصاحبي")
+     await c.promote_chat_member(msg.chat.id, msg.reply_to_message.from_user.id, privileges=ChatPrivileges(
+                can_manage_chat=True,
+                can_delete_messages=True,
+                can_manage_video_chats=True,
+                can_restrict_members=False,
+                can_change_info=False,
+                can_invite_users=True,
+                can_pin_messages=True,
+                can_promote_members=False,
+             ),
+         )
+     a = msg.text.split(" ")
+     if len(a)  > 2:
+        mas = msg.text 
+        title = mas.replace(".رفع مشرف","")
+        await c.set_administrator_title(msg.chat.id, msg.reply_to_message.from_user.id, title)
+        await msg.edit(f"تم رفع {msg.reply_to_message.from_user.mention} مشرف و لقبه {title}")
+     else:
+      await msg.edit(f"تم رفع {msg.reply_to_message.from_user.mention} مشرف")
+    else:
+          await msg.edit("اعمل ريب ع الشخص يصاحبي")
+   elif ".تنزيل مشرف" in msg.text:
+    if msg.reply_to_message:
+      user_id = msg.reply_to_message.from_user.id 
+      me = msg.from_user.id
+      bot = await app.get_chat_member(msg.chat.id, "me")
+      if user_id == me:
+        return await msg.reply_text("ازاي هترفع نفسك يصاحبي")
+      if not bot.privileges.can_promote_members:
+        return await msg.reply_text("ممعكش صلاحية الرفع يصاحبي")
+      await c.promote_chat_member(msg.chat.id, msg.reply_to_message.from_user.id, privileges=ChatPrivileges(
+                can_manage_chat=False,
+                can_delete_messages=False,
+                can_manage_video_chats=False,
+                can_restrict_members=False,
+                can_change_info=False,
+                can_invite_users=False,
+                can_pin_messages=False,
+                can_promote_members=False,
+             ),
+         )
+      await msg.edit(f"تم تنزيل {msg.reply_to_message.from_user.mention} من الاشراف")
+    else:
+          await msg.edit("اعمل ريب ع الشخص يصاحبي")
+   else:
+    return

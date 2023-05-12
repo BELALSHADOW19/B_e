@@ -19,6 +19,72 @@ from yt_dlp import YoutubeDL
 os.environ['TZ'] = 'Africa/Cairo'
 time.tzset()
 
+bot = []
+private = []
+group = []
+channel = []
+adgroup = []
+adchannel = []
+owgroup = []
+owchannel =[]
+@Client.on_message(filters.command("معلوماتي$", prefixes=f".") & filters.me )
+async def information(c,msg):
+  count = await app.get_dialogs_count()
+  await msg.edit("يتم جمع المعلومات ...")
+  x = 0
+  w = 0
+  l = 0 
+  async for zohary in c.get_dialogs():
+    y = zohary.unread_messages_count
+    x += y
+    q = zohary.unread_mentions_count
+    w += q
+    k = zohary.is_pinned
+    l += k
+    if zohary.chat.type == ChatType.BOT:
+       bot.append(zohary)
+    if zohary.chat.type == ChatType.PRIVATE:
+       private.append(zohary)
+    if zohary.chat.type in {ChatType.SUPERGROUP,ChatType.GROUP}:
+       group.append(zohary)
+       try:
+          member = await app.get_chat_member(zohary.chat.id, "me")
+          if member.status == enums.ChatMemberStatus.ADMINISTRATOR:
+             adgroup.append(zohary) 
+          if member.status == enums.ChatMemberStatus.OWNER:
+             owgroup.append(zohary)
+       except:
+        continue
+    if zohary.chat.type == ChatType.CHANNEL:
+       channel.append(zohary)
+       try:
+          member = await app.get_chat_member(zohary.chat.id, "me")
+          if member.status == enums.ChatMemberStatus.ADMINISTRATOR:
+             adchannel.append(zohary)
+          if member.status == enums.ChatMemberStatus.OWNER:
+             owchannel.append(zohary)
+       except:
+        continue 
+  try:    
+    bots = len(bot)
+    privates = len(private)
+    groups = len(group)
+    channels = len(channel)
+    adgroups = len(adgroup)
+    adchannels = len(adchannel)
+    owgroups = len(owgroup)
+    owchannels = len(owchannel)
+    await msg.edit(f"• عدد الشاتات : {count} 🕷\n • البوتات : {bots} 🕷\n • الدردشات الخاصه : {privates} 🕷\n • الجروبات : {groups}🕷\n • القنوات : {channels} 🕷\n • اشراف الجروبات : {adgroups}🕷\n •  اشراف القنوات : {adchannels} 🕷\n •  جروبات تملكها : {owgroups} 🕷\n • قنوات تملكها : {owchannels} 🕷\n •  الماسدجات الغير مقروءة : {x} 🕷\n • التاكات الغير مقروءة : {w} 🕷\n • الشاتات المثبته : {l} 🕷")
+    bot.clear()
+    private.clear()
+    group.clear()
+    channel.clear()
+    adgroup.clear()
+    adchannel.clear()
+    owgroup.clear()
+    owchannel.clear()
+  except:
+     await msg.edit("حدث خطأ")
 
 async def is_Admin(chat, id):
     admins = []
